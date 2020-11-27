@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+
+    <title>Список пользователей</title>
+
+    <link rel="icon" type="image/png" th:href="@{/favicon.ico}"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <meta name="ctx" th:content="${#httpServletRequest.getContextPath()}"/>
+</head>
+
+<body>
+
+<div th:replace="~{navigation :: navi(Users)}"/>
+
+<div class="container">
+
+
+    <h1 th:text="#{users.list}" />
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>FirstNAme</th>
+            <th>LastName</th>
+            <th>email</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr  class="responsive-row" th:each="client : ${clients}">
+
+
+            <td th:text="${client.id}"/>
+            <td th:text="${client.loginName}"/>
+            <td th:text="${client.password}"/>
+            <td th:text="${client.firstName}"/>
+            <td th:text="${client.lastName}"/>
+            <td th:text="${client.email}"/>
+            <td>
+
+                <a  th:href="@{'/clients/delete/' + ${client.id}}" class="btn btn-danger">Удалить</a>
+                <a  th:href="@{'/clients/clone/' + ${client.id}}" class="btn btn-danger">Клонировать</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+</div>
+
+</body>
+</html>
