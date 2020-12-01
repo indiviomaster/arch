@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.indivio.homecrm.entities.Client;
+import ru.indivio.homecrm.entities.DecoMessage;
 import ru.indivio.homecrm.repositories.ClientRepository;
 
 import java.util.Optional;
@@ -58,6 +59,7 @@ public class ClientServiceImpl implements ClientService {
     public boolean cloneById(Long id) {
         Client client = clientRepository.findById(id).get();
         Client cloneClient = client.clone();
+        System.out.println(new DecoMessage("Client cloned:".concat(client.getLoginName())).show());
         clientRepository.save(cloneClient);
         return true;
     }
