@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.indivio.homecrm.entities.Client;
+import ru.indivio.homecrm.entities.Deliveries;
 import ru.indivio.homecrm.services.ClientService;
 
 import java.util.List;
@@ -42,6 +43,12 @@ public class ClientController {
     @GetMapping("/clone/{id}")
     public String cloneById(Model model,@PathVariable(name = "id") Long id) {
         clientService.cloneById(id);
+        return "redirect:/clients";
+    }
+
+    @GetMapping("/deliver/{cost}")
+    public String deliver(Model model,@PathVariable(name = "cost") Integer cost) {
+        Deliveries.deliver(cost);
         return "redirect:/clients";
     }
 }

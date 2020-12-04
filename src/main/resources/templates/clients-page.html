@@ -50,6 +50,8 @@
 
                 <a  th:href="@{'/clients/delete/' + ${client.id}}" class="btn btn-danger">Удалить</a>
                 <a  th:href="@{'/clients/clone/' + ${client.id}}" class="btn btn-danger">Клонировать</a>
+                <a  th:href="@{'/clients/deliver/' + 2600}" class="btn btn-danger">Отправить машиной</a>
+                <a  th:href="@{'/clients/deliver/' + 800}" class="btn btn-danger">Отправить курьером</a>
 
             </td>
         </tr>
