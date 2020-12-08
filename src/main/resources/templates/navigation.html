@@ -36,6 +36,11 @@
                     th:classappend="${activeTab == 'Users' ? 'active' : ''}">
                     <a class="nav-link" th:href="@{/clients}">Клиенты</a>
                 </li>
+                <li class="nav-item"
+                    th:classappend="${activeTab == 'Books' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/books}">Книги</a>
+                </li>
+
 
                 <!--<li sec:authorize="hasRole('ADMIN')" class="nav-item"
                     th:classappend="${activeTab == 'AdminDashboard' ? 'active' : ''}">
@@ -52,6 +57,7 @@
                     <a class="nav-link" th:href="@{/profile}"><span sec:authentication="name">Username</span></a>
 
                 </li>
+
 
 
                 <!--Login-->

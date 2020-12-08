@@ -1,4 +1,4 @@
-package ru.indivio.homecrm.entities;
+package ru.indivio.homecrm.dto;
 
 import lombok.Data;
 
@@ -6,9 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Data
-
 @Table(name = "clients")
-public class Client implements Cloneable {
+public class ClientDto implements Cloneable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -29,10 +28,10 @@ public class Client implements Cloneable {
     @Column(name = "email")
     private String email;
 
-    public Client() {
+    public ClientDto() {
     }
 
-    public Client(String loginName, String password, String firstName, String lastName, String email) {
+    public ClientDto(String loginName, String password, String firstName, String lastName, String email) {
         this.loginName = loginName;
         this.password = password;
         this.firstName = firstName;
@@ -40,8 +39,8 @@ public class Client implements Cloneable {
         this.email = email;
     }
     @Override
-    public Client clone(){
-        return new Client("clone".concat(this.loginName),"clonePass".concat(this.password),this.firstName,this.lastName,this.email);
+    public ClientDto clone(){
+        return new ClientDto("clone".concat(this.loginName),"clonePass".concat(this.password),this.firstName,this.lastName,this.email);
     }
 
     @Override
