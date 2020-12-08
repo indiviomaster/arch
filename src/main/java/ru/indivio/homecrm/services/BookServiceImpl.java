@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.indivio.homecrm.dto.BookDto;
 import ru.indivio.homecrm.entities.Book;
+import ru.indivio.homecrm.entities.Note;
 import ru.indivio.homecrm.mapers.BookMapper;
+import ru.indivio.homecrm.mapers.NoteMapper;
 import ru.indivio.homecrm.repositories.BookRepository;
 
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
 public class BookServiceImpl implements BookService {
 
     private final BookMapper mapper = BookMapper.MAPPER;
+    private NoteMapper nm;
     private BookRepository bookRepository;
 
     @Autowired
@@ -40,6 +43,13 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookDto findById(Long id) {
         Book book = bookRepository.findById(id).orElse(new Book());
+        try {
+            Note note = nm.getNote(Math.toIntExact(id));
+            System.out.println("***************"+note+"***************");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return BookMapper.MAPPER.fromBook(book);
     }
 
