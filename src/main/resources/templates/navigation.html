@@ -40,6 +40,10 @@
                     th:classappend="${activeTab == 'Books' ? 'active' : ''}">
                     <a class="nav-link" th:href="@{/books}">Книги</a>
                 </li>
+                <li class="nav-item"
+                    th:classappend="${activeTab == 'Calls' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/calls}">Звонки</a>
+                </li>
 
 
                 <!--<li sec:authorize="hasRole('ADMIN')" class="nav-item"

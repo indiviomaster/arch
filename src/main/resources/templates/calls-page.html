@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
 
-    <title>Список книг</title>
+    <title>Список пользователей</title>
 
     <link rel="icon" type="image/png" th:href="@{/favicon.ico}"/>
 
@@ -16,33 +16,39 @@
 
 <body>
 
-<div th:replace="~{navigation :: navi(Books)}"/>
+<div th:replace="~{navigation :: navi(Calls)}"/>
 
 <div class="container">
 
 
-    <h1 th:text="#{books.list}" />
+    <h1 th:text="#{calls.list}" />
 
     <table class="table table-hover">
         <thead class="thead-dark">
         <tr>
             <th>ID</th>
-            <th>Title</th>
-            <th>Author</th>
+            <th>Phone</th>
+            <th>Client Name</th>
+            <th>Message</th>
             <th>Action</th>
         </tr>
         </thead>
         <tbody>
 
-        <tr  class="responsive-row" th:each="book : ${books}">
+        <tr  class="responsive-row" th:each="call : ${calls}">
 
 
-            <td th:text="${book.id}"/>
-            <td th:text="${book.title}"/>
-            <td th:text="${book.author}"/>
-
+            <td th:text="${call.id}"/>
+            <td th:text="${call.phone}"/>
+            <td th:text="${call.name}"/>
+            <td th:text="${call.question}"/>
             <td>
-                <a  th:href="@{'/books/delete/' + ${book.id}}" class="btn btn-danger">Удалить</a>
+
+                <a  th:href="@{'/calls/delete/' + ${call.id}}" class="btn btn-danger">Удалить</a>
+                <a  th:href="@{'/calls/edit/' + ${call.id}}" class="btn btn-danger">Изменить</a>
+
+
+
             </td>
         </tr>
         </tbody>
